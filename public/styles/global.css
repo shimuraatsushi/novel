@@ -1,0 +1,382 @@
+/* === リセット & ベース === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #f5f0e8;
+  --color-bg-dark: #ede6d8;
+  --color-text: #2c1a0e;
+  --color-text-muted: #6b5744;
+  --color-accent: #8b3a2a;
+  --color-accent-light: #c47a5a;
+  --color-border: #c8b9a2;
+  --color-ornament: #8b6914;
+
+  --font-serif: 'Noto Serif JP', 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN',
+    '游明朝', YuMincho, serif;
+  --font-sans: 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN',
+    '游ゴシック', YuGothic, sans-serif;
+
+  --max-width: 680px;
+  --spacing-base: 1.6rem;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  line-height: 2.0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === ヘッダー === */
+.site-header {
+  background-color: var(--color-bg-dark);
+  border-bottom: 2px solid var(--color-border);
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.site-title-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.site-title-link:hover .site-title {
+  color: var(--color-accent);
+}
+
+.site-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--color-text);
+  transition: color 0.2s;
+}
+
+.site-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  margin-top: 0.3rem;
+  font-family: var(--font-sans);
+  font-weight: 300;
+}
+
+/* === メインコンテンツ === */
+.main-content {
+  flex: 1;
+  padding: 2rem 1rem;
+}
+
+/* === フッター === */
+.site-footer {
+  background-color: var(--color-bg-dark);
+  border-top: 1px solid var(--color-border);
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  font-weight: 300;
+}
+
+/* === トップページ === */
+.index-page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.work-intro {
+  text-align: center;
+  padding: 1.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 2.5rem;
+}
+
+.work-description {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin: 0.8rem 0;
+  line-height: 1.9;
+}
+
+.ornament {
+  color: var(--color-ornament);
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+}
+
+/* === 部ごとのセクション === */
+.part-section {
+  margin-bottom: 3rem;
+}
+
+.part-title {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-sans);
+}
+
+.part-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.part-label::before,
+.part-label::after {
+  content: '';
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+/* === 話一覧 === */
+.chapter-list {
+  list-style: none;
+}
+
+.chapter-item {
+  border-bottom: 1px solid var(--color-bg-dark);
+}
+
+.chapter-link {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.75rem 0.5rem;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: background-color 0.15s, padding-left 0.15s;
+}
+
+.chapter-link:hover {
+  background-color: var(--color-bg-dark);
+  padding-left: 1rem;
+}
+
+.chapter-episode {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  white-space: nowrap;
+  min-width: 4.5rem;
+}
+
+.chapter-title {
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.chapter-link:hover .chapter-title {
+  color: var(--color-accent);
+}
+
+.chapter-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  margin-left: auto;
+}
+
+/* === 話ページ === */
+.chapter-page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.chapter-header {
+  text-align: center;
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.chapter-part {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.2em;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  margin-bottom: 0.3rem;
+}
+
+.chapter-num {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.15em;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+
+.chapter-header .chapter-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin: 0.5rem 0 1rem;
+  color: var(--color-text);
+}
+
+.chapter-ornament {
+  color: var(--color-ornament);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  margin-top: 1rem;
+}
+
+/* === 本文 === */
+.chapter-body {
+  font-size: 1.05rem;
+  line-height: 2.2;
+  color: var(--color-text);
+}
+
+.chapter-body p {
+  margin-bottom: 1.8em;
+  text-indent: 1em;
+}
+
+.chapter-body p:first-child {
+  text-indent: 1em;
+}
+
+/* 会話文（かぎかっこ始まり）はインデントなし */
+.chapter-body p:has(> :first-child:is(span[class^=''])):first-letter {
+  text-indent: 0;
+}
+
+/* === 話フッター === */
+.chapter-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.chapter-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.nav-prev {
+  text-align: left;
+}
+
+.nav-next {
+  text-align: right;
+}
+
+.nav-home {
+  text-align: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  transition: color 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.nav-link:hover {
+  color: var(--color-accent);
+}
+
+.nav-link--home {
+  display: inline-block;
+  border: 1px solid var(--color-border);
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-link--home:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+.nav-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.nav-title {
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+.nav-link:hover .nav-title {
+  color: var(--color-accent);
+}
+
+/* === レスポンシブ === */
+@media (max-width: 480px) {
+  .site-title {
+    font-size: 1.4rem;
+  }
+
+  .chapter-header .chapter-title {
+    font-size: 1.3rem;
+  }
+
+  .chapter-body {
+    font-size: 1rem;
+  }
+
+  .chapter-nav {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 0.8rem;
+  }
+
+  .nav-prev {
+    text-align: center;
+  }
+
+  .nav-next {
+    text-align: center;
+  }
+
+  .chapter-desc {
+    display: none;
+  }
+}

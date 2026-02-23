@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allChapters = await getCollection('chapters');
+
+// 部ごとにグループ化し、エピソード順でソート
+const chaptersByPart = allChapters
+  .sort((a, b) => a.data.episode - b.data.episode)
+  .reduce((acc, chapter) => {
+    const part = chapter.data.part;
+    if (!acc[part]) acc[part] = [];
+    acc[part].push(chapter);
+    return acc;
+  }, {} as Record<number, typeof allChapters>);
+
+const partNames: Record<number, string> = {
+  1: '第一部',
+  2: '第二部',
+  3: '第三部',
+};
+---
+
+<Layout title="作品タイトル">
+  <div class="index-page">
+    <div class="work-intro">
+      <div class="ornament">◆</div>
+      <p class="work-description">
+        ここに作品の紹介文を入れてください。
+      </p>
+      <div class="ornament">◆</div>
+    </div>
+
+    {[1, 2, 3].map((partNum) => {
+      const chapters = chaptersByPart[partNum];
+      if (!chapters || chapters.length === 0) return null;
+
+      return (
+        <section class="part-section">
+          <h2 class="part-title">
+            <span class="part-label">{partNames[partNum]}</span>
+          </h2>
+          <ol class="chapter-list">
+            {chapters.map((chapter) => (
+              <li class="chapter-item">
+                <a href={`/chapters/${chapter.id.replace(/\.md$/, '')}/`} class="chapter-link">
+                  <span class="chapter-episode">第{chapter.data.episode}話</span>
+                  <span class="chapter-title">{chapter.data.title}</span>
+                  {chapter.data.description && (
+                    <span class="chapter-desc">{chapter.data.description}</span>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      );
+    })}
+  </div>
+</Layout>
