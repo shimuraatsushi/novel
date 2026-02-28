@@ -25,9 +25,7 @@ from googleapiclient.discovery import build
 # 各部のGoogle DriveフォルダID
 # フォルダURLの末尾の文字列: https://drive.google.com/drive/folders/XXXXXXXXXX
 PART_FOLDERS = {
-    1: "ここに第一部のフォルダIDを入力",
-    2: "ここに第二部のフォルダIDを入力",
-    3: "ここに第三部のフォルダIDを入力",
+    1: "1nF431J-o4FKllx6UZVBQlgzPd4A8YTLG"
 }
 
 # 出力先ディレクトリ (プロジェクトルートからの相対パス)
