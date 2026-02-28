@@ -8,3 +8,7 @@ node_modules/
 # OS
 .DS_Store
 Thumbs.db
+
+# Google Drive API 認証情報 (絶対にコミットしない)
+scripts/credentials.json
+scripts/token.json
