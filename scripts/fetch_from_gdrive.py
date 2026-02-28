@@ -133,6 +133,17 @@ def build_frontmatter(title: str, part: int, episode: int, description: str = ""
     return "\n".join(lines)
 
 
+def parse_doc_name(name: str) -> tuple[int | None, str]:
+    """
+    "001_タイトル" 形式のファイル名からエピソード番号とタイトルを取得する。
+    形式に合わない場合は (None, name) を返す。
+    """
+    match = re.match(r"^(\d+)_(.+)$", name)
+    if match:
+        return int(match.group(1)), match.group(2)
+    return None, name
+
+
 def build_filename(part: int, episode: int) -> str:
     """ファイル名を生成する (例: part1-01.md)"""
     return f"part{part}-{episode:02d}.md"
@@ -161,8 +172,10 @@ def fetch_all(dry_run: bool = False):
 
         print(f"  {len(docs)} 件のドキュメントを発見")
 
-        for episode_num, doc_info in enumerate(docs, start=1):
-            title = doc_info["name"]
+        for fallback_num, doc_info in enumerate(docs, start=1):
+            episode_num, title = parse_doc_name(doc_info["name"])
+            if episode_num is None:
+                episode_num = fallback_num
             doc_id = doc_info["id"]
             filename = build_filename(part_num, episode_num)
             output_path = OUTPUT_DIR / filename
