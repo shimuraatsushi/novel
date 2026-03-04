@@ -2,7 +2,7 @@
 title: 指定保管所の暗闇と、私設の科捜研
 part: 1
 episode: 5
-publishedAt: 2026-03-01
+publishedAt: 2026-03-04
 ---
 
 　月曜日の午後8時15分。
